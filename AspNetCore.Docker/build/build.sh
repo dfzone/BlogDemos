@@ -19,6 +19,8 @@ scp -P 22 -r ../publish/* root@192.168.163.128:/data/websites/app
 
 read -p "Press any key to continue."
 
+#构建docker image 
 ssh -p 22 root@192.168.163.128 "docker build -t aspnetcoredocker -f /data/websites/app/Dockerfile /data/websites/app"
 
-ssh -p 22 root@192.168.163.128 "docker run --name=mydockertest -p 8080:8080 -d  aspnetcoredocker"
+#执行容器
+ssh -p 22 root@192.168.163.128 "docker run --name=mydockertest -p 8080:80 -d  aspnetcoredocker"
